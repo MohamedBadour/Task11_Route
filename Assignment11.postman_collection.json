@@ -1,0 +1,60 @@
+﻿{
+  "info": {
+    "name": "Assignment11",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup with Validation",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\"name\": \"Mohamed\", \"email\": \"mohamed11@test.com\", \"password\": \"123456\"}"},
+            "url": "http://localhost:3000/auth/signup"
+          }
+        },
+        {
+          "name": "Signin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {"exec": ["var res = pm.response.json(); if(res.token) pm.collectionVariables.set('token', res.token);"]}
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\"email\": \"mohamed11@test.com\", \"password\": \"123456\"}"},
+            "url": "http://localhost:3000/auth/signin"
+          }
+        },
+        {
+          "name": "Google Login",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {"mode": "raw", "raw": "{\"idToken\": \"mock-google-token\"}"},
+            "url": "http://localhost:3000/auth/google"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Only",
+      "item": [
+        {
+          "name": "Get All Users (Admin Role)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "http://localhost:3000/users/all"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [{"key": "token", "value": ""}]
+}

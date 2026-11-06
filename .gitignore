@@ -1,0 +1,17 @@
+﻿# Assignment 11 - Sara7a App (Week 2)
+1. **Authorization**: \llowTo('admin')\ role-based middleware.
+2. **Validation**: Joi middleware validating body, params, and query.
+3. **Social Login**: Google OAuth token verification and login.
+
+## Run
+1. \
+pm install\
+2. \
+pm start\
+3. Import \Assignment11.postman_collection.json\
+"@ | Out-File -FilePath "D:\Assignments\assignment-11\README.md" -Encoding utf8
+
+# .gitignore
+@"
+node_modules/
+.env
